@@ -19,9 +19,7 @@ Delve into the techniques for creating unit tests using JUnit
 Explore the Material UI component library to make more user-friendly user interfaces 
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1838822364) today!
-
-<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
-alt="https://www.packtpub.com/" border="5" /></a>
+ 
 
 ## Instructions and Navigations
 All of the code is organized into folders. For example, Chapter10.
@@ -42,9 +40,12 @@ With the following software and hardware list you can run all code files present
 ### Software and Hardware List
 | Chapter |                   Software required                     |           OS required              |
 | ------- | ------------------------------------------------------- | ---------------------------------- |
-|    1    |       Java SDK 8, Eclipse IDE (Latest version)          | Windows, Mac OS X, and Linux (Any) |
-|    5    |     Node.js (Version => 6), VS Code (Latest version)    | Windows, Mac OS X, and Linux (Any) |
-|    14   | Heroku CLI (Latest version), Docker (Community edition) | Windows, Mac OS X, and Linux (Any) |
+|    1    | [Java SDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) | Windows, Mac OS X, and Linux (Any) |
+|    1    | [Eclipse IDE (Latest version)](https://www.eclipse.org/downloads/)              | Windows, Mac OS X, and Linux (Any) |
+|    5    | [Node.js (Version => 6)](https://nodejs.org/en/download/)                       | Windows, Mac OS X, and Linux (Any) |
+|    5    | [VS Code (Latest version)](https://code.visualstudio.com/)                      | Windows, Mac OS X, and Linux (Any) |
+|    14   | [Heroku CLI (Latest version)](https://devcenter.heroku.com/articles/heroku-cli) | Windows, Mac OS X, and Linux (Any) |
+|    14   |          Docker (Community edition)                     | Windows, Mac OS X, and Linux (Any) |
 
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://www.packtpub.com/sites/default/files/downloads/9781838822361_ColorImages.pdf).
