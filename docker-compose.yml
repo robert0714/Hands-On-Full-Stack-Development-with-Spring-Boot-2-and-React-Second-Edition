@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+  mariadb:
+    image: mariadb:10.4.6
+    environment:
+      MYSQL_ROOT_PASSWORD: YOUR_DB_PASSWORD
+      MYSQL_DATABASE: cardb
+      MYSQL_USER: cardb
+      MYSQL_PASSWORD: YOUR_DB_PASSWORD
+      TZ: Asia/Taipei
+      character-set-server: utf8mb4
+      collation-server: utf8mb4_unicode_ci
+    logging:
+      driver: syslog
+      options:
+        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
+    restart: on-failure
+    volumes:
+     - ${PWD}/mariadb:/var/lib/mysql
+    ports: 
+     - "3306:3306" 
+#    network_mode:  "host"
+    
