@@ -24,3 +24,7 @@ OR if you are using yarn
 ```
 yarn star
 ```
+
+## Basic Tutorials
+
+https://www.w3schools.com/react/react_intro.asp
