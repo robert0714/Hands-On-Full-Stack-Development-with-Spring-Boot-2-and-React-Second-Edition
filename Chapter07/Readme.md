@@ -1,3 +1,22 @@
+
+If you use npm 5.1 or earlier, you can't use npx. Instead, install create-react-app globally:
+
+```bash
+npm install -g create-react-app
+```
+Now you can run:
+
+```bash 
+create-react-app weatherApp
+```
+
+This command creates React app named myapp  in npm 5.1 or later:
+
+```bash
+npx create-react-app weatherApp
+```
+
+
 Create React app:
 create-react-app weatherApp
 
