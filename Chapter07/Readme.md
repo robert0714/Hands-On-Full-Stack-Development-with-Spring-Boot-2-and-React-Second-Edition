@@ -14,18 +14,9 @@ ould not create a project called "weatherApp" because of npm naming restrictions
 create-react-app weatherapp
 ```
 
-This command creates React app named myapp  in npm 5.1 or later:
+This command creates React app named myapp  in npm 5.2 or later:
 
 ```bash
-create-react-app weatherapp
-```
-
-
-Create React app:
-create-react-app weatherapp
-
-```bash
-npm install -g create-react-app
 npx create-react-app weatherapp
 ```
 
