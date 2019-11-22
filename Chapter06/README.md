@@ -18,7 +18,7 @@ Now you can run:
 create-react-app my-app
 ```
 
-This command creates React app named myapp  in npm 5.1 or later:
+This command creates React app named myapp  in npm 5.2 or later:
 
 ```bash
 npx create-react-app myapp
