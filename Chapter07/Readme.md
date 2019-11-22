@@ -8,21 +8,25 @@ Now you can run:
 
 ```bash 
 create-react-app weatherApp
+ould not create a project called "weatherApp" because of npm naming restrictions:
+  *  name can no longer contain capital letters
+  
+create-react-app weatherapp
 ```
 
 This command creates React app named myapp  in npm 5.1 or later:
 
 ```bash
-npx create-react-app weatherApp
+create-react-app weatherapp
 ```
 
 
 Create React app:
-create-react-app weatherApp
+create-react-app weatherapp
 
 ```bash
 npm install -g create-react-app
-npx create-react-app weatherApp
+npx create-react-app weatherapp
 ```
 
 Replace App.js file with the file from Github
