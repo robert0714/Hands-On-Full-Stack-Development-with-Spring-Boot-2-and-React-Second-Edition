@@ -1,68 +1,88 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chapter 11 Adding CRUD Functionalities
 
-## Available Scripts
+## Creating the list page
 
-In the project directory, you can run:
+constants.js
 
-### `npm start`
+Carlist.json
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+React Table
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```bash
+npm install react-table
+```
 
-### `npm test`
+Then, import react-table and the style sheet to your Carlist.js file:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```js
+import ReactTable from "react-table";
+import 'react-table/react-table.css';
+```
 
-### `npm run build`
+## How to show toast messages to the user
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It would be nice to show the user some feedback in the event of successful deletion, or if there are any errors. Let's implement a toast message to show the status of deletion. For that, we are going to use the [react-toastify component](https://github.com/fkhadra/react-toastify). Install the component by typing the following command into the Terminal you are using:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```bash
+npm install react-toastify
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once installation is complete, start your app and open the Carlist.js file in the editor.
+We have to import **ToastContainer, toast**, and the style sheet so that we can start using
+**react-toastify**. Add the following import statements to your **Carlist.js** file:
 
-### `npm run eject`
+```js
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**ToastContainer** is the container component for showing toast messages, and it should be inside the **render()** method. In ToastContainer, you can define the duration of the toast message in milliseconds using the **autoClose** prop. Add the **ToastContainer** component inside the return statement in the **render()** method, just after **ReactTable**:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+return (
+    <div className="App">
+        <ReactTable data={this.state.cars} columns={columns}
+            filterable={true}/>
+        <ToastContainer autoClose={1500} } />
+    </div>
+);
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Then, we will call the toast method in the **onDelClick()** function to show the toast message. You can define the type and position of the message. The **success** message is shown when deletion succeeds, and the **error** message is shown in the case of an **error**:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+// Delete car
+onDelClick = (link) => {
+    fetch(link, {method: 'DELETE'})
+    .then(res => {
+        toast.success("Car deleted", {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
+        this.fetchCars();
+    })
+    .catch(err => {
+        toast.error("Error when deleting", {
+        position: toast.POSITION.BOTTOM_LEFT
+    });
+    console.error(err)
+    })
+}
+```
 
-## Learn More
+## How to export data to the CSV file from the React app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+One feature that we will also implement is a **Comma-Separated Values (CSV)** export of the data. There's a package called [react-csv](https://github.com/abdennour/react- csv) that can be used to export an array of data to the CSV file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If your app is running, stop the development server by pressing Ctrl + C in the Terminal, and type the following command to install **react-csv**. Post installation, restart the app:
 
-### Code Splitting
+```bash
+npm install react-csv
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+The **react-csv** package contains two components—**CSVLink** and **CSVDownload**. We will use the first one in our app, so add the following import to the **Carlist.js** file:
 
-### Analyzing the Bundle Size
+```js
+import { CSVLink } from 'react-csv';
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The ***CSVLink*** component takes the data prop, which contains the data array that will be exported to the CSV file. You can also define the data separator using the ***separator*** prop (the default separator is a comma). Add the ***CSVLink*** component inside the return statement in the ***render()*** method.

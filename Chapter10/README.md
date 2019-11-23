@@ -1,68 +1,84 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chapter 10 Setting Up the Frontend for Our Spring Boot RESTful Web Service
 
-## Available Scripts
+## Preparing the Spring Boot backend
 
-In the project directory, you can run:
+We are beginning frontend development with the unsecured version of our backend. In the first phase, we will implement all CRUD functionalities and test that these are working correctly. In the second phase, we will enable security in our backend and make the modifications that are required, and finally, we will implement authentication.
 
-### `npm start`
+Open the Spring Boot application with Eclipse, which we created in **_Chapter 5, Securing and Testing Your Backend_**. Open the **SecurityConfig.java** file that defines the Spring Security configuration. Temporarily comment out the current configuration and give everyone access to all endpoints. Refer to the following modifications:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```java
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    // Add this row to allow access to all endpoints
+    http.csrf().disable().cors().and().authorizeRequests().anyRequest().permitAll();
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    /* Comment this out
 
-### `npm test`
+    http.csrf().disable().cors().and().authorizeRequests()
+    .antMatchers(HttpMethod.POST, "/login").permitAll()
+    .anyRequest().authenticated()
+    .and()
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    // Filter for the api/login requests
+    .addFilterBefore(new LoginFilter("/login", authenticationManager()),
+    UsernamePasswordAuthenticationFilter.class)
 
-### `npm run build`
+    // Filter for other requests to check JWT in header
+    .addFilterBefore(new AuthenticationFilter(),
+    UsernamePasswordAuthenticationFilter.class);
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    */
+}
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Creating the React project for the frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Before we start coding the frontend, we have to create a new React app:
 
-### `npm run eject`
+1. Open PowerShell, or any other suitable Terminal. Create a new React app by typing the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+````bash
+npx create-react-app carfront
+``
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install the Material-UI component library by typing the following command in the project's root folder:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm install @material-ui/core
+````
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Run the app by typing the following command in the project's root folder:
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Or, if you are using yarn, type in the following:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+yarn start
+```
 
-### Code Splitting
+4. Open the src folder with VS Code, remove any superfluous code, and use the Material-UI Appbar in the App.js file to get the toolbar for your app. Following the modifications, your App.js file source code should appear as follows:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```js
+import React from 'react';
+import './App.css';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+function App() {
+    return (
+    <div className="App">
+        <AppBar position="static" color="default">
+            <Toolbar>
+                <Typography variant="h6" color="inherit">
+                    CarList
+                </Typography>
+            </Toolbar>
+        </AppBar>
+    </div>
+    );
+}
+export default App;
+```
