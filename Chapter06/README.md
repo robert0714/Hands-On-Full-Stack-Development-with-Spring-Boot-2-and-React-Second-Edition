@@ -39,3 +39,8 @@ yarn star
 ## Basic Tutorials
 
 https://www.w3schools.com/react/react_intro.asp
+
+
+## hotkeys
+
+prettier formatter :  Shift +Alt + F
