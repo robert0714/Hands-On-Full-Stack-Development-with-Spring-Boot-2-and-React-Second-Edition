@@ -19,7 +19,7 @@ class Carlist extends Component {
   }
   
   fetchCars = () => {
-    console.log("FETCH")
+    console.log("FETCH");
     fetch(SERVER_URL + 'api/cars')
     .then((response) => response.json()) 
     .then((responseData) => { 
