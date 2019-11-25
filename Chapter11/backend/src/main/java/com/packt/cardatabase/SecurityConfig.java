@@ -22,8 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			// by default uses a Bean by the name of corsConfigurationSource
-			.cors();
+		// by default uses a Bean by the name of corsConfigurationSource
+		.cors()
+		// for authorization about spring data rest operation (ex: PUT / PATCH , DELETE) If you remove it , you wold encounter  that http status code is 403 "error": "Forbidden" .
+		.and().csrf().disable()
+		. authorizeRequests().anyRequest().permitAll()
+		;
 	}
 	
 	@Bean
