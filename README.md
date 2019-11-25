@@ -1,8 +1,8 @@
 # Hands-On Full Stack Development with Spring Boot 2 and React - Second Edition
 
-<a href="https://www2.packtpub.com/web-development/hands-full-stack-development-spring-boot-2-and-react-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838822361 "><img src="https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B14545.png" alt="Hands-On Full Stack Development with Spring Boot 2 and React - Second Edition" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/web-development/hands-full-stack-development-spring-boot-2-and-react-second-edition"><img src="https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b14545.png" alt="Hands-On Full Stack Development with Spring Boot 2 and React - Second Edition" height="256px" align="right"></a>
 
-This is the code repository for [Hands-On Full Stack Development with Spring Boot 2 and React - Second Edition](https://www2.packtpub.com/web-development/hands-full-stack-development-spring-boot-2-and-react-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838822361 ), published by Packt.
+This is the code repository for [Hands-On Full Stack Development with Spring Boot 2 and React - Second Edition](https://www.packtpub.com/web-development/hands-full-stack-development-spring-boot-2-and-react-second-edition), published by Packt.
 
 **Build modern and scalable full stack applications using Spring Framework 5 and React with Hooks**
 
